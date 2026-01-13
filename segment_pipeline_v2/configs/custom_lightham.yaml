@@ -1,0 +1,32 @@
+DEVICE          : cuda
+SAVE_DIR        : 'output'
+
+MODEL:
+  NAME          : Light-Ham
+  BACKBONE      : ResNet-50
+  HEAD_CHANNELS : 256
+
+DATASET:
+  NAME          : BmpPngDataset
+  ROOT          : '/data2/project/2025summer/yjh0913/dataset_split'
+  IGNORE_LABEL  : 255
+
+TRAIN:
+  BATCH_SIZE    : 2
+  EPOCHS        : 50
+  EVAL_INTERVAL : 10
+  AMP           : false
+  NUM_WORKERS   : 4
+  IMAGE_SIZE    : [512, 512]
+
+EVAL:
+  MODEL_PATH    : ''
+  SPLIT         : 'val'
+
+OPTIMIZER:
+  TYPE          : AdamW
+  LR            : 0.0006
+  WEIGHT_DECAY  : 0.01
+
+SCHEDULER:
+  POWER         : 0.9
